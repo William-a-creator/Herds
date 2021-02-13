@@ -1,0 +1,35 @@
+ import java.util.ArrayList;
+import java.util.List;
+ * @author willi
+ */
+public class Herd implements Movable{
+    private List<Movable> herd;
+    
+    public Herd(){
+        this.herd = new ArrayList<>();
+    }
+    
+    //returns a string representation of the positions of the members of the herd, each on its own line.
+    @Override
+    public String toString(){
+        String list = "";
+        for (Movable movable : this.herd){
+            list += movable.toString() + "\n";
+        }
+        return list;        
+    }
+    
+    //adds an object that implements the movable interface to the herd.
+    public void addToHerd(Movable movable){
+        this.herd.add(movable);
+    }
+    
+    //Moves the herd with by the amount specified by the parameters. 
+    //Notice that here you have to move each member of the herd.    
+    @Override
+    public void move(int dx, int dy) {
+        for (Movable movable : this.herd){
+            movable.move(dx, dy);
+        }
+    }
+}
